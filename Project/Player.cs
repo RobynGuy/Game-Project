@@ -29,7 +29,7 @@ namespace Project
             width = 70;
             height = 80;
             rotationAngle = 0;
-            player = Properties.Resources.Scarecrow;
+            player = Properties.Resources.hose;
             playerRec = new Rectangle(x, y, width, height);
         }
         //methods

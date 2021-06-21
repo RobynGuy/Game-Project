@@ -27,7 +27,7 @@ namespace Project
         {
             width = 50;
             height = 50;
-            projectile = Properties.Resources.Fire;
+            projectile = Properties.Resources.water;
             projectileRec = new Rectangle(x, y, width, height);
             //this code works out the speed of the missile to be used in the moveMissile method
             xSpeed = 30* (Math.Cos((projectileRotate - 90) * Math.PI / 180));

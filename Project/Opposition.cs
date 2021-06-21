@@ -25,10 +25,10 @@ namespace Project
         {
             x = displacement;
             y = 10;
-            width = 40;
-            height = 40;
+            width = 100;
+            height = 75;
             
-            oppositionImage = Properties.Resources.Crow;
+            oppositionImage = Properties.Resources.opossum;
             oppositionRec = new Rectangle(x, y, width, height);
         }
 
