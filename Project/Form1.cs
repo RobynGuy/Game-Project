@@ -50,12 +50,17 @@ namespace Project
         {
             if (e.KeyData == Keys.Left) { turnLeft = true; }
             if (e.KeyData == Keys.Right) { turnRight = true; }
+            if (e.KeyData == Keys.Up)
+            {
+                projectiles.Add(new Projectile(player.playerRec, player.rotationAngle));
+            }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { turnLeft = false; }
             if (e.KeyData == Keys.Right) { turnRight = false; }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -70,6 +75,7 @@ namespace Project
                 projectiles.Add(new Projectile(player.playerRec, player.rotationAngle));
             }
         }
+
 
         private void tmrShoot_Tick(object sender, EventArgs e)
         {
@@ -113,6 +119,14 @@ namespace Project
                 }
             }
             this.Invalidate();
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                projectiles.Add(new Projectile(player.playerRec, player.rotationAngle));
+            }
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
