@@ -43,7 +43,7 @@ namespace Project
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Project.Properties.Resources.city_600x500;
-            this.ClientSize = new System.Drawing.Size(584, 461);
+            this.ClientSize = new System.Drawing.Size(584, 500);
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";

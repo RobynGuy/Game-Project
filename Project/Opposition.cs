@@ -8,6 +8,8 @@ using System.Drawing.Drawing2D;
 
 namespace Project
 {
+
+
     class Opposition
     {  // declare fields to use in the class
 
@@ -18,26 +20,30 @@ namespace Project
         Point centre;
 
 
+
         public Rectangle oppositionRec;//variable for a rectangle to place our image in
 
         //Create a constructor (initialises the values of the fields)
         public Opposition(int displacement)
         {
-            x = displacement;
-            y = 10;
+            x = 10;
+            y = displacement;
             width = 100;
             height = 75;
-            
+
             oppositionImage = Properties.Resources.opossum;
             oppositionRec = new Rectangle(x, y, width, height);
+
+
         }
+
 
         // Methods for the Planet class
         public void Draw(Graphics g)
         {
             centre = new Point(oppositionRec.X + width / 2, oppositionRec.Y + width / 2);
             matrix = new Matrix();
-           
+
             g.Transform = matrix;
 
             oppositionRec = new Rectangle(x, y, width, height);
@@ -46,8 +52,11 @@ namespace Project
 
         public void MoveOpposition(Graphics g)
         {
-            y += 5;
+            x += 5;
             oppositionRec.Location = new Point(x, y);
         }
+
+       
     }
+    
 }

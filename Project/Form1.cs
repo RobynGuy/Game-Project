@@ -86,7 +86,7 @@ namespace Project
                 {
                     if (p.oppositionRec.IntersectsWith(m.projectileRec))
                     {
-                        p.y = -20;// relocate planet to the top of the form
+                        p.x = -20;// relocate planet to the top of the form
 
                         projectiles.Remove(m);
                         break;
@@ -150,9 +150,9 @@ namespace Project
 
 
                 //if the planet reaches the bottom of the form relocate it back to the top
-                if (p.y >= ClientSize.Height)
+                if (p.x >= ClientSize.Height)
                 {
-                    p.y = -20;
+                    p.x = -20;
                 }
             }
         }
