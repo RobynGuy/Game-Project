@@ -31,7 +31,7 @@ namespace Project
             width = 100;
             height = 75;
 
-            oppositionImage = Properties.Resources.opossum;
+            oppositionImage = Properties.Resources.opossum2;
             oppositionRec = new Rectangle(x, y, width, height);
 
 

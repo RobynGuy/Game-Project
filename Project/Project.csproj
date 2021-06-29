@@ -53,6 +53,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Opposition.cs" />
+    <Compile Include="Opposition2.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projectile.cs" />
@@ -119,6 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cityy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\opossum2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

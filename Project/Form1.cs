@@ -23,14 +23,19 @@ namespace Project
         List<Projectile> projectiles = new List<Projectile>();
 
         List<Opposition> oppositions = new List<Opposition>();
+
+        List<Opposition2> oppositions2 = new List<Opposition2>();
         public Form1()
         {
             InitializeComponent();
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 3; i++)
             {
-                int displacement = 50 + (i * 70);
+                int displacement = 30 + (i * 170);
                 oppositions.Add(new Opposition(displacement));
+                oppositions2.Add(new Opposition2(displacement));
             }
+           
+           
         }
         Random i = new Random();
 
@@ -118,6 +123,21 @@ namespace Project
                     player.x = 0;
                 }
             }
+            foreach (Opposition2 h in oppositions2)
+            {
+
+                foreach (Projectile m in projectiles)
+                {
+                    if (h.opposition2Rec.IntersectsWith(m.projectileRec))
+                    {
+                        h.x = 490;// relocate planet to the top of the form
+
+                        projectiles.Remove(m);
+                        break;
+                    }
+                }
+               
+            }
             this.Invalidate();
         }
 
@@ -153,6 +173,19 @@ namespace Project
                 if (p.x >= ClientSize.Height)
                 {
                     p.x = -20;
+                }
+            }
+            foreach (Opposition2 h in oppositions2)
+            {
+                h.Draw(g);//Draw the planet
+                h.MoveOpposition2(g);//move the planet
+
+
+
+                //if the planet reaches the bottom of the form relocate it back to the top
+                if (h.x >= ClientSize.Height)
+                {
+                    h.x = 490;
                 }
             }
         }
