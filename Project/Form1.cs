@@ -126,11 +126,17 @@ namespace Project
             foreach (Opposition2 h in oppositions2)
             {
 
+
                 foreach (Projectile m in projectiles)
                 {
+                    if (m.projectileRec.Y > (this.ClientSize.Height) || (m.projectileRec.Y < 0) || (m.projectileRec.X > this.ClientSize.Width) || (m.projectileRec.X < 0))
+                    {
+                        projectiles.Remove(m);
+                        break;
+                    }
                     if (h.opposition2Rec.IntersectsWith(m.projectileRec))
                     {
-                        h.x = 490;// relocate planet to the top of the form
+                        h.x = 520;// relocate planet to the top of the form
 
                         projectiles.Remove(m);
                         break;
@@ -170,7 +176,7 @@ namespace Project
 
 
                 //if the planet reaches the bottom of the form relocate it back to the top
-                if (p.x >= ClientSize.Height)
+                if (p.x >= ClientSize.Width)
                 {
                     p.x = -20;
                 }
@@ -183,10 +189,13 @@ namespace Project
 
 
                 //if the planet reaches the bottom of the form relocate it back to the top
-                if (h.x >= ClientSize.Height)
+                if (h.x >= ClientSize.Width) 
                 {
-                    h.x = 490;
+                    h.x = -20;
+                    //its not the number I already tried a bunch of numbers but it doesn't work :/?
                 }
+
+                
             }
         }
 
