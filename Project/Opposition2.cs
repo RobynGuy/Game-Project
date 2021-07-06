@@ -32,8 +32,6 @@ namespace Project
 
             opposition2Image = Properties.Resources.opossum;
             opposition2Rec = new Rectangle(x, y, width, height);
-
-
         }
 
 

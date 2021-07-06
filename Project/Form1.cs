@@ -181,21 +181,21 @@ namespace Project
                     p.x = -20;
                 }
             }
-            foreach (Opposition2 h in oppositions2)
+            foreach (Opposition2 p in oppositions2)
             {
-                h.Draw(g);//Draw the planet
-                h.MoveOpposition2(g);//move the planet
+                p.Draw(g);//Draw the planet
+                p.MoveOpposition2(g);//move the planet
 
 
 
                 //if the planet reaches the bottom of the form relocate it back to the top
-                if (h.x >= ClientSize.Width) 
+                if (p.x <= (ClientSize.Width - p.x)) 
                 {
-                    h.x = -20;
-                    //its not the number I already tried a bunch of numbers but it doesn't work :/?
+                    p.x = 500;
+                    //its not the number I already tried a bunch of numbers but it doesn't work :/? But it has to be the number it works when i put it backwards.
                 }
 
-                
+                //if (p.x <= (ClientSize.Width - p.x)) <--- this makes it to the centreline and then stops. 
             }
         }
 
