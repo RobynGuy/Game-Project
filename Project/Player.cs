@@ -24,8 +24,8 @@ namespace Project
         //Create a constructor (initialises the values of the fields)
         public Player()
         {
-            x = 10;
-            y = 360;
+            x = 250;
+            y = 200;
             width = 70;
             height = 80;
             rotationAngle = 0;
@@ -50,8 +50,7 @@ namespace Project
 
         public void movePlayer(int mouseX, int mouseY)
         {
-            playerRec.X = mouseX - (playerRec.Width / 2);
-            playerRec.Y = mouseY - (playerRec.Height / 2);
+           
 
 
         }

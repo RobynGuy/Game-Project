@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Project
 {
@@ -37,6 +38,12 @@ namespace Project
            
            
         }
+
+        public string _textBox
+        {
+            set { label7.Text = value; }
+        }
+
         Random i = new Random();
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
@@ -55,10 +62,7 @@ namespace Project
         {
             if (e.KeyData == Keys.Left) { turnLeft = true; }
             if (e.KeyData == Keys.Right) { turnRight = true; }
-            if (e.KeyData == Keys.Up)
-            {
-                projectiles.Add(new Projectile(player.playerRec, player.rotationAngle));
-            }
+            
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -81,6 +85,13 @@ namespace Project
             }
         }
 
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                projectiles.Add(new Projectile(player.playerRec, player.rotationAngle));
+            }
+        }
 
         private void tmrShoot_Tick(object sender, EventArgs e)
         {
@@ -147,12 +158,30 @@ namespace Project
             this.Invalidate();
         }
 
-        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                projectiles.Add(new Projectile(player.playerRec, player.rotationAngle));
-            }
+            tmrShoot.Enabled = true;
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tmrShoot.Enabled = false;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tmrShoot.Enabled = false;
+            Application.Exit();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
