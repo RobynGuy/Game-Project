@@ -63,6 +63,26 @@ namespace Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bin_closed {
+            get {
+                object obj = ResourceManager.GetObject("bin_closed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bin_open {
+            get {
+                object obj = ResourceManager.GetObject("bin_open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap city {
             get {
                 object obj = ResourceManager.GetObject("city", resourceCulture);
@@ -146,6 +166,16 @@ namespace Project.Properties {
         internal static System.Drawing.Bitmap Rabbit {
             get {
                 object obj = ResourceManager.GetObject("Rabbit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rubbish {
+            get {
+                object obj = ResourceManager.GetObject("rubbish", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -34,6 +34,7 @@ namespace Project
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,13 +42,11 @@ namespace Project
             this.LblLives = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tmrShoot
             // 
-            this.tmrShoot.Interval = 90;
             this.tmrShoot.Tick += new System.EventHandler(this.tmrShoot_Tick);
             // 
             // menuStrip1
@@ -75,6 +74,13 @@ namespace Project
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -112,6 +118,7 @@ namespace Project
             this.LblScore.Size = new System.Drawing.Size(35, 13);
             this.LblScore.TabIndex = 4;
             this.LblScore.Text = "label4";
+            this.LblScore.Click += new System.EventHandler(this.LblScore_Click);
             // 
             // LblLives
             // 
@@ -139,13 +146,6 @@ namespace Project
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 7;
             this.label7.Text = "label7";
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // Form1
             // 

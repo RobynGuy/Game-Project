@@ -15,17 +15,26 @@ namespace Project
     public partial class Form1 : Form
     {
         Graphics g; //declare a graphics object called g so we can draw on the Form
+       
         Player player = new Player(); //create an instance of the Spaceship Class called spaceship
+        
         string move;
 
         bool turnLeft, turnRight;
+
+        int score, lives;
+
+        Random xspeed = new Random();
 
         //declare a list  missiles from the Missile class
         List<Projectile> projectiles = new List<Projectile>();
 
         List<Opposition> oppositions = new List<Opposition>();
+        
 
         List<Opposition2> oppositions2 = new List<Opposition2>();
+
+
         public Form1()
         {
             InitializeComponent();
@@ -44,11 +53,11 @@ namespace Project
             set { label7.Text = value; }
         }
 
-        Random i = new Random();
+        
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            player.movePlayer(e.X, e.Y);
+         
         }
 
         private void tmrPlayer_Tick(object sender, EventArgs e)
@@ -74,7 +83,10 @@ namespace Project
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            lives = 10;
+            LblLives.Text = lives.ToString();
+            score = 0;
+            LblScore.Text = score.ToString();
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -93,62 +105,113 @@ namespace Project
             }
         }
 
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lives = 10;
+            LblLives.Text = lives.ToString();
+            tmrShoot.Enabled = true;
+            score = 0;
+            LblScore.Text = score.ToString();
+
+            
+            // pass lives from LblLives Text property to lives variable
+
+        }
+
+
         private void tmrShoot_Tick(object sender, EventArgs e)
         {
+
+
+
             foreach (Opposition p in oppositions)
             {
 
-                foreach (Projectile m in projectiles)
+                if (player.playerRec.IntersectsWith(p.oppositionRec))
                 {
-                    if (p.oppositionRec.IntersectsWith(m.projectileRec))
-                    {
-                        p.x = -20;// relocate planet to the top of the form
+                    //reset planet[i] back to top of panel
+                    p.x = -20; // set  y value of planetRec
+                    lives -= 1;// lose a life
+                    LblLives.Text = lives.ToString();// display number of lives
+                    CheckLives();
+                }
 
-                        projectiles.Remove(m);
-                        break;
-                    }
-                }
-                if (turnRight)
-                {
-                    move = "right";
-                    player.rotationAngle += 5;
 
-                }
-                if (turnLeft)
-                {
-                    move = "left";
-                    player.rotationAngle -= 5;
-
-                }
-               
-                if (player.y > (this.ClientSize.Height - player.height))
-                {  
-                    player.y = this.ClientSize.Height - player.height;
-                }  
-                if (player.x > (this.ClientSize.Width - player.width))
-                {
-                    player.x = this.ClientSize.Width - player.width;
-                }   
-                if (player.x < 0)
-                {
-                    player.x = 0;
-                }
-            }
-            foreach (Opposition2 h in oppositions2)
-            {
 
 
                 foreach (Projectile m in projectiles)
                 {
                     if (m.projectileRec.Y > (this.ClientSize.Height) || (m.projectileRec.Y < 0) || (m.projectileRec.X > this.ClientSize.Width) || (m.projectileRec.X < 0))
                     {
+                      
+
+                        projectiles.Remove(m);
+                        break;
+                    }
+
+                    if (p.oppositionRec.IntersectsWith(m.projectileRec))
+                    {
+                        score += 1;//update the score
+                        LblScore.Text = score.ToString();
+                        p.x = -20;// relocate planet to the top of the form
+
+                        projectiles.Remove(m);
+                        break;
+                    }
+                }
+                
+            }
+            if (turnRight)
+            {
+                move = "right";
+                player.rotationAngle += 5;
+
+            }
+            if (turnLeft)
+            {
+                move = "left";
+                player.rotationAngle -= 5;
+
+            }
+
+            if (player.y > (this.ClientSize.Height - player.height))
+            {
+                player.y = this.ClientSize.Height - player.height;
+            }
+            if (player.x > (this.ClientSize.Width - player.width))
+            {
+                player.x = this.ClientSize.Width - player.width;
+            }
+            if (player.x < 0)
+            {
+                player.x = 0;
+            }
+            foreach (Opposition2 h in oppositions2)
+            {
+
+                if (player.playerRec.IntersectsWith(h.opposition2Rec))
+                {
+                    //reset planet[i] back to top of panel
+                    h.x = -20; // set  y value of planetRec
+                    lives -= 1;// lose a life
+                    LblLives.Text = lives.ToString();// display number of lives
+                    CheckLives();
+                }
+
+                foreach (Projectile m in projectiles)
+                {
+                    if (m.projectileRec.Y > (this.ClientSize.Height) || (m.projectileRec.Y < 0) || (m.projectileRec.X > this.ClientSize.Width) || (m.projectileRec.X < 0))
+                    {
+
+                        
                         projectiles.Remove(m);
                         break;
                     }
                     if (h.opposition2Rec.IntersectsWith(m.projectileRec))
                     {
                         h.x = 520;// relocate planet to the top of the form
-
+                        score += 1;//update the score
+                        LblScore.Text = score.ToString();
                         projectiles.Remove(m);
                         break;
                     }
@@ -158,14 +221,20 @@ namespace Project
             this.Invalidate();
         }
 
-        private void startToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            tmrShoot.Enabled = true;
-        }
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tmrShoot.Enabled = false;
+
+            foreach (Opposition p in oppositions)
+            {
+                p.x = -20;
+            }
+
+                foreach (Opposition2 h in oppositions2)
+            {
+                h.x = 520;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -184,13 +253,28 @@ namespace Project
             Application.Exit();
         }
 
+        private void LblScore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
 
             g = e.Graphics;
+            for (int i = 0; i < 7; i++)
+            {
+                // generate a random number from 5 to 20 and put it in rndmspeed
+            
 
-            player.drawPlayer(g);
 
+                //call the Planet class's drawPlanet method to draw the images
+
+
+                player.drawPlayer(g);
+            }
 
             foreach (Projectile m in projectiles)
             {
@@ -228,7 +312,19 @@ namespace Project
             }
         }
 
-       
+        private void CheckLives()
+        {
+            if (lives == 0)
+            {
+                
+                tmrShoot.Enabled = false;
+                MessageBox.Show("Game Over");
+                //change messagebox to a game over screen? with restart and 
+                //close button
+
+            }
+        }
+
     }
 
 }
