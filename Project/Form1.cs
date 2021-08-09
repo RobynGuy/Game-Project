@@ -330,7 +330,8 @@ namespace Project
                 //if the planet reaches the bottom of the form relocate it back to the top
                 if (p.x <= (ClientSize.Width - p.x)) 
                 {
-                    p.x = 540;
+                    oppositions2.Remove(p);
+                    break;
                     //its not the number I already tried a bunch of numbers but it doesn't work :/? But it has to be the number it works when i put it backwards.
                 }
 
