@@ -25,7 +25,7 @@ namespace Project
         //Create a constructor (initialises the values of the fields)
         public Opposition2(int displacement)
         {
-            x = 490;
+            x = 540;
             y = displacement;
             width = 100;
             height = 75;

@@ -50,8 +50,9 @@ namespace Project
 
         public void movePlayer(int mouseX, int mouseY)
         {
-           
 
+            playerRec.X = mouseX - (playerRec.Width / 2);
+            playerRec.Y = mouseY - (playerRec.Height / 2);
 
         }
 

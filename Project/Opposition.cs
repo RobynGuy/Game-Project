@@ -26,10 +26,10 @@ namespace Project
         //Create a constructor (initialises the values of the fields)
         public Opposition(int displacement)
         {
-            x = 10;
+            x = -40;
             y = displacement;
-            width = 100;
-            height = 75;
+            width = 90;
+            height = 65;
 
             oppositionImage = Properties.Resources.opossum2;
             oppositionRec = new Rectangle(x, y, width, height);

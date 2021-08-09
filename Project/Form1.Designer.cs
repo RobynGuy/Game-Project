@@ -41,7 +41,7 @@ namespace Project
             this.LblScore = new System.Windows.Forms.Label();
             this.LblLives = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.LblName = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,14 +138,16 @@ namespace Project
             this.label6.TabIndex = 6;
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // label7
+            // LblName
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(293, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "label7";
+            this.LblName.AutoSize = true;
+            this.LblName.Location = new System.Drawing.Point(293, 9);
+            this.LblName.Name = "LblName";
+            this.LblName.Size = new System.Drawing.Size(35, 13);
+            this.LblName.TabIndex = 7;
+            this.LblName.Text = "label7";
+            this.LblName.Click += new System.EventHandler(this.LblName_Click);
+            this.LblName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LblName_MouseMove);
             // 
             // Form1
             // 
@@ -153,7 +155,7 @@ namespace Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Project.Properties.Resources.city_600x500;
             this.ClientSize = new System.Drawing.Size(584, 461);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.LblName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.LblLives);
             this.Controls.Add(this.LblScore);
@@ -190,7 +192,7 @@ namespace Project
         private System.Windows.Forms.Label LblScore;
         private System.Windows.Forms.Label LblLives;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label LblName;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
     }
 }

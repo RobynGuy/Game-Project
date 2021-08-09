@@ -42,22 +42,28 @@ namespace Project
             {
                 int displacement = 30 + (i * 170);
                 oppositions.Add(new Opposition(displacement));
+               
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                int displacement = 90 + (i * 170);
+                
                 oppositions2.Add(new Opposition2(displacement));
             }
-           
-           
+
         }
 
         public string _textBox
         {
-            set { label7.Text = value; }
+            set { LblName.Text = value; }
         }
 
         
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-         
+            player.movePlayer(e.X, e.Y);
+          
         }
 
         private void tmrPlayer_Tick(object sender, EventArgs e)
@@ -109,11 +115,21 @@ namespace Project
         {
             lives = 10;
             LblLives.Text = lives.ToString();
+            AutoClosingMessageBox.Show("Waiting", "wait...", 3000);
             tmrShoot.Enabled = true;
             score = 0;
             LblScore.Text = score.ToString();
 
-            
+            foreach (Opposition p in oppositions)
+            {
+                p.x = -40;
+            }
+
+            foreach (Opposition2 h in oppositions2)
+            {
+                h.x = 540;
+            }
+
             // pass lives from LblLives Text property to lives variable
 
         }
@@ -130,7 +146,7 @@ namespace Project
                 if (player.playerRec.IntersectsWith(p.oppositionRec))
                 {
                     //reset planet[i] back to top of panel
-                    p.x = -20; // set  y value of planetRec
+                    p.x = -40; // set  y value of planetRec
                     lives -= 1;// lose a life
                     LblLives.Text = lives.ToString();// display number of lives
                     CheckLives();
@@ -153,7 +169,8 @@ namespace Project
                     {
                         score += 1;//update the score
                         LblScore.Text = score.ToString();
-                        p.x = -20;// relocate planet to the top of the form
+                        CheckScore();
+                        p.x = -40;// relocate planet to the top of the form
 
                         projectiles.Remove(m);
                         break;
@@ -164,13 +181,13 @@ namespace Project
             if (turnRight)
             {
                 move = "right";
-                player.rotationAngle += 5;
+                player.rotationAngle += 10;
 
             }
             if (turnLeft)
             {
                 move = "left";
-                player.rotationAngle -= 5;
+                player.rotationAngle -= 10; 
 
             }
 
@@ -192,7 +209,7 @@ namespace Project
                 if (player.playerRec.IntersectsWith(h.opposition2Rec))
                 {
                     //reset planet[i] back to top of panel
-                    h.x = -20; // set  y value of planetRec
+                    h.x = -40; // set  y value of planetRec
                     lives -= 1;// lose a life
                     LblLives.Text = lives.ToString();// display number of lives
                     CheckLives();
@@ -209,9 +226,10 @@ namespace Project
                     }
                     if (h.opposition2Rec.IntersectsWith(m.projectileRec))
                     {
-                        h.x = 520;// relocate planet to the top of the form
+                        h.x = 540;// relocate planet to the top of the form
                         score += 1;//update the score
                         LblScore.Text = score.ToString();
+                        CheckScore();
                         projectiles.Remove(m);
                         break;
                     }
@@ -228,12 +246,12 @@ namespace Project
 
             foreach (Opposition p in oppositions)
             {
-                p.x = -20;
+                p.x = -40;
             }
 
                 foreach (Opposition2 h in oppositions2)
             {
-                h.x = 520;
+                h.x = 540;
             }
         }
 
@@ -258,7 +276,15 @@ namespace Project
 
         }
 
-       
+        private void LblName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LblName_MouseMove(object sender, MouseEventArgs e)
+        {
+          
+        }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -289,9 +315,9 @@ namespace Project
 
 
                 //if the planet reaches the bottom of the form relocate it back to the top
-                if (p.x >= ClientSize.Width)
+                if ((ClientSize.Width - p.x) <= p.x  )
                 {
-                    p.x = -20;
+                    p.x = -40;
                 }
             }
             foreach (Opposition2 p in oppositions2)
@@ -304,7 +330,7 @@ namespace Project
                 //if the planet reaches the bottom of the form relocate it back to the top
                 if (p.x <= (ClientSize.Width - p.x)) 
                 {
-                    p.x = 500;
+                    p.x = 540;
                     //its not the number I already tried a bunch of numbers but it doesn't work :/? But it has to be the number it works when i put it backwards.
                 }
 
@@ -325,6 +351,18 @@ namespace Project
             }
         }
 
+
+        private void CheckScore()
+        {
+            if (score == 100)
+            {
+                tmrShoot.Enabled = false;
+                MessageBox.Show("You Win!");
+                    //Switch to a win screen later??
+            }
+        }
     }
+
+
 
 }

@@ -32,6 +32,7 @@ namespace Project
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
+            this.btnInstructions = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -61,11 +62,21 @@ namespace Project
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // btnInstructions
+            // 
+            this.btnInstructions.Location = new System.Drawing.Point(275, 296);
+            this.btnInstructions.Name = "btnInstructions";
+            this.btnInstructions.Size = new System.Drawing.Size(75, 23);
+            this.btnInstructions.TabIndex = 3;
+            this.btnInstructions.Text = "Instructions";
+            this.btnInstructions.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 450);
+            this.Controls.Add(this.btnInstructions);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
@@ -81,5 +92,6 @@ namespace Project
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnInstructions;
     }
 }
