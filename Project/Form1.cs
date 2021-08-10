@@ -44,7 +44,7 @@ namespace Project
                 oppositions.Add(new Opposition(displacement));
                
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 int displacement = 90 + (i * 170);
                 
@@ -152,9 +152,6 @@ namespace Project
                     CheckLives();
                 }
 
-
-
-
                 foreach (Projectile m in projectiles)
                 {
                     if (m.projectileRec.Y > (this.ClientSize.Height) || (m.projectileRec.Y < 0) || (m.projectileRec.X > this.ClientSize.Width) || (m.projectileRec.X < 0))
@@ -209,7 +206,7 @@ namespace Project
                 if (player.playerRec.IntersectsWith(h.opposition2Rec))
                 {
                     //reset planet[i] back to top of panel
-                    h.x = -40; // set  y value of planetRec
+                    h.x = 540; // set  y value of planetRec
                     lives -= 1;// lose a life
                     LblLives.Text = lives.ToString();// display number of lives
                     CheckLives();
@@ -330,8 +327,7 @@ namespace Project
                 //if the planet reaches the bottom of the form relocate it back to the top
                 if (p.x <= (ClientSize.Width - p.x)) 
                 {
-                    oppositions2.Remove(p);
-                    break;
+                    p.x = 540;
                     //its not the number I already tried a bunch of numbers but it doesn't work :/? But it has to be the number it works when i put it backwards.
                 }
 
@@ -345,7 +341,9 @@ namespace Project
             {
                 
                 tmrShoot.Enabled = false;
-                MessageBox.Show("Game Over");
+                Form3 frm = new Form3();
+                frm.Show();
+                this.Hide();
                 //change messagebox to a game over screen? with restart and 
                 //close button
 
@@ -358,8 +356,10 @@ namespace Project
             if (score == 100)
             {
                 tmrShoot.Enabled = false;
-                MessageBox.Show("You Win!");
-                    //Switch to a win screen later??
+                Form4 frm = new Form4();
+                frm.Show();
+                this.Hide();
+                //Switch to a win screen later??
             }
         }
     }

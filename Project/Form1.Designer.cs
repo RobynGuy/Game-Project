@@ -32,9 +32,9 @@ namespace Project
             this.components = new System.ComponentModel.Container();
             this.tmrShoot = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStop = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,43 +51,45 @@ namespace Project
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem,
-            this.stopToolStripMenuItem,
-            this.closeToolStripMenuItem});
+            this.mnuStart,
+            this.mnuStop,
+            this.mnuQuit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(779, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // startToolStripMenuItem
+            // mnuStart
             // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.startToolStripMenuItem.Text = "Start";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            this.mnuStart.Name = "mnuStart";
+            this.mnuStart.Size = new System.Drawing.Size(54, 24);
+            this.mnuStart.Text = "Start";
+            this.mnuStart.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
-            // stopToolStripMenuItem
+            // mnuStop
             // 
-            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.stopToolStripMenuItem.Text = "Stop";
-            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            this.mnuStop.Name = "mnuStop";
+            this.mnuStop.Size = new System.Drawing.Size(54, 24);
+            this.mnuStop.Text = "Stop";
+            this.mnuStop.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
-            // closeToolStripMenuItem
+            // mnuQuit
             // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.mnuQuit.Name = "mnuQuit";
+            this.mnuQuit.Size = new System.Drawing.Size(51, 24);
+            this.mnuQuit.Text = "Quit";
+            this.mnuQuit.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(236, 9);
+            this.label1.Location = new System.Drawing.Point(315, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Name";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -95,27 +97,30 @@ namespace Project
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(343, 9);
+            this.label2.Location = new System.Drawing.Point(457, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Score";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(444, 8);
+            this.label3.Location = new System.Drawing.Point(592, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.Size = new System.Drawing.Size(41, 17);
             this.label3.TabIndex = 3;
             this.label3.Text = "Lives";
             // 
             // LblScore
             // 
             this.LblScore.AutoSize = true;
-            this.LblScore.Location = new System.Drawing.Point(384, 9);
+            this.LblScore.Location = new System.Drawing.Point(512, 11);
+            this.LblScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblScore.Name = "LblScore";
-            this.LblScore.Size = new System.Drawing.Size(35, 13);
+            this.LblScore.Size = new System.Drawing.Size(46, 17);
             this.LblScore.TabIndex = 4;
             this.LblScore.Text = "label4";
             this.LblScore.Click += new System.EventHandler(this.LblScore_Click);
@@ -123,27 +128,30 @@ namespace Project
             // LblLives
             // 
             this.LblLives.AutoSize = true;
-            this.LblLives.Location = new System.Drawing.Point(482, 8);
+            this.LblLives.Location = new System.Drawing.Point(643, 10);
+            this.LblLives.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblLives.Name = "LblLives";
-            this.LblLives.Size = new System.Drawing.Size(35, 13);
+            this.LblLives.Size = new System.Drawing.Size(46, 17);
             this.LblLives.TabIndex = 5;
             this.LblLives.Text = "label5";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(152, 8);
+            this.label6.Location = new System.Drawing.Point(203, 10);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 13);
+            this.label6.Size = new System.Drawing.Size(0, 17);
             this.label6.TabIndex = 6;
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // LblName
             // 
             this.LblName.AutoSize = true;
-            this.LblName.Location = new System.Drawing.Point(293, 9);
+            this.LblName.Location = new System.Drawing.Point(391, 11);
+            this.LblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblName.Name = "LblName";
-            this.LblName.Size = new System.Drawing.Size(35, 13);
+            this.LblName.Size = new System.Drawing.Size(46, 17);
             this.LblName.TabIndex = 7;
             this.LblName.Text = "label7";
             this.LblName.Click += new System.EventHandler(this.LblName_Click);
@@ -151,10 +159,10 @@ namespace Project
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Project.Properties.Resources.city_600x500;
-            this.ClientSize = new System.Drawing.Size(584, 461);
+            this.ClientSize = new System.Drawing.Size(779, 567);
             this.Controls.Add(this.LblName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.LblLives);
@@ -165,6 +173,7 @@ namespace Project
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -184,8 +193,8 @@ namespace Project
         #endregion
         private System.Windows.Forms.Timer tmrShoot;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuStart;
+        private System.Windows.Forms.ToolStripMenuItem mnuStop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -193,7 +202,7 @@ namespace Project
         private System.Windows.Forms.Label LblLives;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label LblName;
-        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuQuit;
     }
 }
 
