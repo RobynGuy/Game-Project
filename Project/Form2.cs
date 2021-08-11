@@ -59,7 +59,7 @@ namespace Project
 
         private void btnInstructions_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Dodge the possums to avoid losing lives, if your lives get to 0 you lose. Shoot rubbish bags at the possums to gain points. If you get to 100 points you win.                                                                                    Controls: Left and Right arrow keys to turn, left click the mouse/trackpad to shoot, move the mouse to move the bin","Instructions");
+            MessageBox.Show("Dodge the possums to avoid losing lives, if your lives get to 0 you lose. Shoot rubbish bags at the possums to gain points. If you get to 300 points you win.                                                                                    Controls: Press A to turn left and press D to turn right. Left click the mouse/trackpad to shoot. Move the mouse to move the bin","Instructions");
         }
 
         private void btnQuit_Click(object sender, EventArgs e)

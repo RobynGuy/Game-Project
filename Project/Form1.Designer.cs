@@ -42,6 +42,13 @@ namespace Project
             this.LblLives = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.LblName = new System.Windows.Forms.Label();
+            this.tmrScore = new System.Windows.Forms.Timer(this.components);
+            this.mnuDifficulty = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDifficultyEasy = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDifficultyMedium = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDifficultyHard = new System.Windows.Forms.ToolStripMenuItem();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LblDifficulty = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +62,8 @@ namespace Project
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuStart,
             this.mnuStop,
-            this.mnuQuit});
+            this.mnuQuit,
+            this.mnuDifficulty});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(779, 28);
@@ -86,7 +94,7 @@ namespace Project
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(315, 11);
+            this.label1.Location = new System.Drawing.Point(315, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
@@ -97,7 +105,7 @@ namespace Project
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(457, 11);
+            this.label2.Location = new System.Drawing.Point(441, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 17);
@@ -107,7 +115,7 @@ namespace Project
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(592, 10);
+            this.label3.Location = new System.Drawing.Point(548, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 17);
@@ -117,7 +125,7 @@ namespace Project
             // LblScore
             // 
             this.LblScore.AutoSize = true;
-            this.LblScore.Location = new System.Drawing.Point(512, 11);
+            this.LblScore.Location = new System.Drawing.Point(494, 9);
             this.LblScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblScore.Name = "LblScore";
             this.LblScore.Size = new System.Drawing.Size(46, 17);
@@ -128,7 +136,7 @@ namespace Project
             // LblLives
             // 
             this.LblLives.AutoSize = true;
-            this.LblLives.Location = new System.Drawing.Point(643, 10);
+            this.LblLives.Location = new System.Drawing.Point(588, 9);
             this.LblLives.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblLives.Name = "LblLives";
             this.LblLives.Size = new System.Drawing.Size(46, 17);
@@ -148,7 +156,7 @@ namespace Project
             // LblName
             // 
             this.LblName.AutoSize = true;
-            this.LblName.Location = new System.Drawing.Point(391, 11);
+            this.LblName.Location = new System.Drawing.Point(358, 9);
             this.LblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblName.Name = "LblName";
             this.LblName.Size = new System.Drawing.Size(46, 17);
@@ -157,12 +165,68 @@ namespace Project
             this.LblName.Click += new System.EventHandler(this.LblName_Click);
             this.LblName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LblName_MouseMove);
             // 
+            // tmrScore
+            // 
+            this.tmrScore.Tick += new System.EventHandler(this.tmrScore_Tick);
+            // 
+            // mnuDifficulty
+            // 
+            this.mnuDifficulty.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuDifficultyEasy,
+            this.mnuDifficultyMedium,
+            this.mnuDifficultyHard});
+            this.mnuDifficulty.Name = "mnuDifficulty";
+            this.mnuDifficulty.Size = new System.Drawing.Size(127, 24);
+            this.mnuDifficulty.Text = "Select Difficulty";
+            this.mnuDifficulty.Click += new System.EventHandler(this.selectDifficultyToolStripMenuItem_Click);
+            // 
+            // mnuDifficultyEasy
+            // 
+            this.mnuDifficultyEasy.Name = "mnuDifficultyEasy";
+            this.mnuDifficultyEasy.Size = new System.Drawing.Size(224, 26);
+            this.mnuDifficultyEasy.Text = "Easy";
+            this.mnuDifficultyEasy.Click += new System.EventHandler(this.easyToolStripMenuItem_Click);
+            // 
+            // mnuDifficultyMedium
+            // 
+            this.mnuDifficultyMedium.Name = "mnuDifficultyMedium";
+            this.mnuDifficultyMedium.Size = new System.Drawing.Size(224, 26);
+            this.mnuDifficultyMedium.Text = "Medium";
+            this.mnuDifficultyMedium.Click += new System.EventHandler(this.mnuDifficultyMedium_Click);
+            // 
+            // mnuDifficultyHard
+            // 
+            this.mnuDifficultyHard.Name = "mnuDifficultyHard";
+            this.mnuDifficultyHard.Size = new System.Drawing.Size(224, 26);
+            this.mnuDifficultyHard.Text = "Hard";
+            this.mnuDifficultyHard.Click += new System.EventHandler(this.mnuDifficultyHard_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(632, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 17);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Difficulty";
+            // 
+            // LblDifficulty
+            // 
+            this.LblDifficulty.AutoSize = true;
+            this.LblDifficulty.Location = new System.Drawing.Point(700, 9);
+            this.LblDifficulty.Name = "LblDifficulty";
+            this.LblDifficulty.Size = new System.Drawing.Size(39, 17);
+            this.LblDifficulty.TabIndex = 9;
+            this.LblDifficulty.Text = "Easy";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Project.Properties.Resources.city_600x500;
             this.ClientSize = new System.Drawing.Size(779, 567);
+            this.Controls.Add(this.LblDifficulty);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.LblName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.LblLives);
@@ -203,6 +267,13 @@ namespace Project
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label LblName;
         private System.Windows.Forms.ToolStripMenuItem mnuQuit;
+        private System.Windows.Forms.Timer tmrScore;
+        private System.Windows.Forms.ToolStripMenuItem mnuDifficulty;
+        private System.Windows.Forms.ToolStripMenuItem mnuDifficultyEasy;
+        private System.Windows.Forms.ToolStripMenuItem mnuDifficultyMedium;
+        private System.Windows.Forms.ToolStripMenuItem mnuDifficultyHard;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblDifficulty;
     }
 }
 

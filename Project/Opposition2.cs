@@ -8,7 +8,7 @@ using System.Drawing.Drawing2D;
 
 namespace Project
 {
-    class Opposition2
+    public partial class Opposition2
     {
         // declare fields to use in the class
 

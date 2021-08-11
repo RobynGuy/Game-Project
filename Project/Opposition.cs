@@ -10,7 +10,7 @@ namespace Project
 {
 
 
-    class Opposition
+    public partial class Opposition
     {  // declare fields to use in the class
 
         public int x, y, width, height; //variables for the rectangle
@@ -54,9 +54,10 @@ namespace Project
         {
             x += 5;
             oppositionRec.Location = new Point(x, y);
+
         }
 
        
     }
-    
+     
 }

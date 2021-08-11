@@ -8,14 +8,16 @@ using System.Drawing;
 
 namespace Project
 {
-    class Player
+    public partial class Player
     {
         // declare fields to use in the class
 
         public int x, y, width, height;//variables for the rectangle
         public Image player;//variable for the planet's image
-
+        public Image playerImage;
         public Rectangle playerRec;//variable for a rectangle to place our image in
+
+        
 
         public int rotationAngle;
         public Matrix matrix;
@@ -32,6 +34,11 @@ namespace Project
             player = Properties.Resources.bin_closed;
             playerRec = new Rectangle(x, y, width, height);
         }
+
+       
+
+       
+
         //methods
         public void drawPlayer(Graphics g)
         {

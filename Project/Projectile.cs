@@ -9,7 +9,7 @@ using System.Drawing.Drawing2D;
 
 namespace Project
 {
-    class Projectile
+   public partial class Projectile
     {
 
         public int x, y, width, height;

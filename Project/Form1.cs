@@ -17,14 +17,17 @@ namespace Project
         Graphics g; //declare a graphics object called g so we can draw on the Form
        
         Player player = new Player(); //create an instance of the Spaceship Class called spaceship
-        
+
+
         string move;
 
         bool turnLeft, turnRight;
+        
+
 
         int score, lives;
 
-        Random xspeed = new Random();
+        
 
         //declare a list  missiles from the Missile class
         List<Projectile> projectiles = new List<Projectile>();
@@ -33,6 +36,7 @@ namespace Project
         
 
         List<Opposition2> oppositions2 = new List<Opposition2>();
+
 
 
         public Form1()
@@ -49,9 +53,13 @@ namespace Project
                 int displacement = 90 + (i * 170);
                 
                 oppositions2.Add(new Opposition2(displacement));
+                
+
             }
 
         }
+
+
 
         public string _textBox
         {
@@ -75,15 +83,15 @@ namespace Project
         //this used to be five btw ^^^ yw homie G
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Left) { turnLeft = true; }
-            if (e.KeyData == Keys.Right) { turnRight = true; }
+            if (e.KeyData == Keys.A) { turnLeft = true; }
+            if (e.KeyData == Keys.D) { turnRight = true; }
             
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Left) { turnLeft = false; }
-            if (e.KeyData == Keys.Right) { turnRight = false; }
+            if (e.KeyData == Keys.A) { turnLeft = false; }
+            if (e.KeyData == Keys.D) { turnRight = false; }
 
         }
 
@@ -100,23 +108,29 @@ namespace Project
             if (e.Button == MouseButtons.Left)
             {
                 projectiles.Add(new Projectile(player.playerRec, player.rotationAngle));
+                //get this to change the image
+               
             }
         }
+
+
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 projectiles.Add(new Projectile(player.playerRec, player.rotationAngle));
+               
             }
         }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            lives = 10;
+           
             LblLives.Text = lives.ToString();
             AutoClosingMessageBox.Show("Waiting", "wait...", 3000);
             tmrShoot.Enabled = true;
+            tmrScore.Enabled = true;
             score = 0;
             LblScore.Text = score.ToString();
 
@@ -164,9 +178,7 @@ namespace Project
 
                     if (p.oppositionRec.IntersectsWith(m.projectileRec))
                     {
-                        score += 1;//update the score
-                        LblScore.Text = score.ToString();
-                        CheckScore();
+                       
                         p.x = -40;// relocate planet to the top of the form
 
                         projectiles.Remove(m);
@@ -224,9 +236,7 @@ namespace Project
                     if (h.opposition2Rec.IntersectsWith(m.projectileRec))
                     {
                         h.x = 540;// relocate planet to the top of the form
-                        score += 1;//update the score
-                        LblScore.Text = score.ToString();
-                        CheckScore();
+                      
                         projectiles.Remove(m);
                         break;
                     }
@@ -239,7 +249,10 @@ namespace Project
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lives = 10;
+            
             tmrShoot.Enabled = false;
+            tmrScore.Enabled = false;
 
             foreach (Opposition p in oppositions)
             {
@@ -290,8 +303,9 @@ namespace Project
             for (int i = 0; i < 7; i++)
             {
                 // generate a random number from 5 to 20 and put it in rndmspeed
-            
 
+                //find the centre point of spaceRec
+             
 
                 //call the Planet class's drawPlanet method to draw the images
 
@@ -312,7 +326,7 @@ namespace Project
 
 
                 //if the planet reaches the bottom of the form relocate it back to the top
-                if ((ClientSize.Width - p.x) <= p.x  )
+                if (p.x >= ClientSize.Width)
                 {
                     p.x = -40;
                 }
@@ -325,7 +339,7 @@ namespace Project
 
 
                 //if the planet reaches the bottom of the form relocate it back to the top
-                if (p.x <= (ClientSize.Width - p.x)) 
+                if (p.x <= 0) 
                 {
                     p.x = 540;
                     //its not the number I already tried a bunch of numbers but it doesn't work :/? But it has to be the number it works when i put it backwards.
@@ -335,12 +349,84 @@ namespace Project
             }
         }
 
+        private void endlessToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void tmrScore_Tick(object sender, EventArgs e)
+        {
+            foreach (Opposition p in oppositions)
+            {
+
+                foreach (Projectile m in projectiles)
+                {
+                  
+                    if (p.oppositionRec.IntersectsWith(m.projectileRec))
+                    {
+                        score += 1;//update the score
+                        LblScore.Text = score.ToString();
+                        CheckScore();
+                    }
+                }
+
+            }
+         
+            foreach (Opposition2 h in oppositions2)
+            {
+                foreach (Projectile m in projectiles)
+                {
+                   
+                    if (h.opposition2Rec.IntersectsWith(m.projectileRec))
+                    {
+                       
+                        score += 1;//update the score
+                        LblScore.Text = score.ToString();
+                        CheckScore();
+                       
+                    }
+                }
+
+            }
+            this.Invalidate();
+        }
+
+        private void selectDifficultyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void easyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lives = 10;
+            LblLives.Text = lives.ToString();
+            LblDifficulty.Text = "Easy"; LblDifficulty.Refresh();
+
+        }
+
+        private void mnuDifficultyMedium_Click(object sender, EventArgs e)
+        {
+            lives = 5;
+            LblLives.Text = lives.ToString();
+            LblDifficulty.Text = "Medium"; LblDifficulty.Refresh();
+           
+        }
+
+        private void mnuDifficultyHard_Click(object sender, EventArgs e)
+        {
+            lives = 1;
+            LblLives.Text = lives.ToString();
+            LblDifficulty.Text = "Hard"; LblDifficulty.Refresh();
+
+        }
+
         private void CheckLives()
         {
             if (lives == 0)
             {
                 
                 tmrShoot.Enabled = false;
+                tmrScore.Enabled = false;
                 Form3 frm = new Form3();
                 frm.Show();
                 this.Hide();
@@ -353,9 +439,10 @@ namespace Project
 
         private void CheckScore()
         {
-            if (score == 100)
+            if (score == 300)
             {
                 tmrShoot.Enabled = false;
+                tmrScore.Enabled = false;
                 Form4 frm = new Form4();
                 frm.Show();
                 this.Hide();
