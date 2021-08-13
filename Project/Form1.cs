@@ -127,7 +127,7 @@ namespace Project
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
            
-            LblLives.Text = lives.ToString();
+         
             AutoClosingMessageBox.Show("Waiting", "wait...", 3000);
             tmrShoot.Enabled = true;
             tmrScore.Enabled = true;
